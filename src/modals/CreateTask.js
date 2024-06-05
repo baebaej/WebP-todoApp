@@ -103,10 +103,7 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
                         <DatePicker
                             selected={deadline}
                             onChange={handleDateChange}
-                            showTimeSelect
-                            dateFormat="Pp"
                             placeholderText="Select a deadline"
-                            className='datepicker'
                         />
                     </div>
                 </DialogContentText>

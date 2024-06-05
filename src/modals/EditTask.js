@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, MenuItem, Select } from '@mui/material';
 
 const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
     const [taskName, setTaskName] = useState('');
@@ -13,6 +13,8 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
             setTaskName(value);
         } else if (name === "description") {
             setDescription(value);
+        } else if (name === "category"){
+            setCategory(value);
         }
     };
 
@@ -62,6 +64,21 @@ const EditTaskPopup = ({ modal, toggle, updateTask, taskObj }) => {
                             name="description"
                             margin="dense"
                         />
+                    </div>
+                    <div className='form-group'>
+                        <Select
+                                label="Category"
+                                value={category}
+                                onChange={handleChange}
+                                name="category"
+                            >
+                                <MenuItem value=""><em>해당없음</em></MenuItem>
+                                <MenuItem value="Work">일</MenuItem>
+                                <MenuItem value="Personal">개인</MenuItem>
+                                <MenuItem value="Study">학습</MenuItem>
+                                <MenuItem value="Play">놀기</MenuItem>
+                                <MenuItem value="Other">기타</MenuItem>
+                        </Select>
                     </div>
                 </DialogContentText>
             </DialogContent>

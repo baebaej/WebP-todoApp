@@ -54,6 +54,7 @@ const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
         const updatedTask = { ...taskObj, isCompleted: !isCompleted };
         setIsCompleted(!isCompleted);
         updateTask(updatedTask);
+        deleteTask(index);
     };
 
     const formatDate = (date) => {
@@ -73,17 +74,18 @@ const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
                     {taskObj.Description}<br /><br />
                     <strong>Category:</strong> {taskObj.Category}<br />
                     <strong>Deadline:</strong> {formatDate(taskObj.Deadline)}<br/>
+
+                </p>
+                
+                <div style={{ position: "absolute", top: "190px", left: "40px" }}>
+                    <div>
                     <Checkbox
                         checked={isCompleted}
                         onChange={handleCheckboxChange}
-                        style={{ color: colors.primaryColor }}
+                        stype={{marginRight:"5px"}}
                     />
                     <label>Completed</label>
-                </p>
-                
-                <div style={{ position: "absolute", top: "160px", left: "160px" }}>
-                    <div>
-                        <Button variant="text" style={{ color: colors.primaryColor, cursor: "pointer", marginRight: "10px" }} onClick={() => setModal(true)}>Edit</Button>
+                        <Button variant="text" style={{ color: colors.primaryColor, cursor: "pointer", marginRight: "1px" }} onClick={() => setModal(true)}>Edit</Button>
                         <Button variant="text" style={{ color: colors.primaryColor, cursor: "pointer" }} onClick={handleDelete}>Delete</Button>
                     </div>
                 </div>
